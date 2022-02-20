@@ -8,7 +8,7 @@ const refreshPromises = {};
 let currentUser = null;
 const forbiddenUpdateAttributes = { api: 1, token: 1, audience: 1, url: 1 };
 const forbiddenSaveAttributes = { api: 1 };
-const isBrowser = () => typeof window !== 'undefined';
+const isBrowser = () => typeof document !== 'undefined';
 
 export default class User {
   constructor(api, tokenResponse, audience) {
