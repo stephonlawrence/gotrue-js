@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 import API, { JSONHTTPError } from 'micro-api-client';
 
 import Admin from './admin';
@@ -211,7 +213,7 @@ function urlBase64Decode(str) {
   }
 
   // polifyll https://github.com/davidchambers/Base64.js
-  const result = window.atob(output);
+  const result = isBrowser() ? window.atob(output) : Buffer.from(output, 'base64').toString();
   try {
     return decodeURIComponent(escape(result));
   } catch {
